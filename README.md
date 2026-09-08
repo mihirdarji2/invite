@@ -23,7 +23,7 @@ invite/
 4. Wait about a minute. Your invite is at:
 
    ```
-   https://YOURNAME.github.io/invite/
+   https://mihirdarji2.github.io/invite/
    ```
 
 Opening it with no guest in the link shows a holding page, which is correct. To
@@ -36,7 +36,7 @@ In Apps Script, add **Invite.gs** as a new script file, then set the first line 
 your real address:
 
 ```js
-const INVITE_BASE = 'https://YOURNAME.github.io/invite';
+const INVITE_BASE = 'https://mihirdarji2.github.io/invite';
 ```
 
 Run these once, in order:
@@ -107,3 +107,12 @@ person needs their own from the **Invite Links** tab.
 **Changing the cards.** Replace the `.webp` file in `assets`, keeping the same
 filename, and regenerate the matching `-tiny.webp` blur placeholder. The names are
 `cover`, `names`, `gaam`, `sangeet`, `wedding`, `family`.
+
+**The QR codes are gone from the Sangeet and Wedding cards.** They were painted out
+of the source images and replaced with an "Open location in Maps" button under each
+card, which is easier to tap on a phone than pointing a second camera at a screen.
+The map links live in the `EVENTS` array near the top of `index.html`, one line each.
+
+**Event dates** also live in that `EVENTS` array. Sangeet is Monday 1 February, taken
+from the card itself. Change a date there and both the strip above the card and the
+calendar file update together.
