@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mihir weds Rachel</title>
+<meta name="theme-color" content="#f6f1e4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23a67c2e'/%3E%3Ctext x='16' y='22' font-size='15' font-family='Georgia,serif' fill='%23fff8e6' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+
+<!-- WhatsApp / iMessage preview -->
+<meta property="og:title" content="Mihir weds Rachel">
+<meta property="og:description" content="With love, the Darji Parivar invite you to share in our celebrations.">
+<meta property="og:image" content="assets/cover.webp">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Gujarati:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#f6f1e4; --ink:#2f2a20; --gold:#a67c2e; --gold-l:#d4b475;
+    --navy:#1f2f4d; --muted:#7a6f5e;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink)}
+  body{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    overflow-x:hidden;
+  }
+  img{display:block;width:100%;height:auto}
+
+  /* ── loading ─────────────────────────────── */
+  #boot{position:fixed;inset:0;display:grid;place-items:center;background:var(--cream);z-index:100;
+    transition:opacity .6s}
+  #boot.gone{opacity:0;pointer-events:none}
+  .diya{width:34px;height:34px;border-radius:50%;
+    background:radial-gradient(circle at 50% 40%, #ffd98a, #d9a441 60%, transparent 70%);
+    animation:flicker 1.6s ease-in-out infinite}
+  @keyframes flicker{0%,100%{opacity:.55;transform:scale(.94)}50%{opacity:1;transform:scale(1.06)}}
+
+  /* ── envelope ────────────────────────────── */
+  #envelope{position:fixed;inset:0;z-index:60;display:grid;place-items:center;
+    background:linear-gradient(180deg,#efe6d2,#e4d8bd);transition:opacity .9s ease, visibility .9s}
+  #envelope.open{opacity:0;visibility:hidden}
+  .env-inner{text-align:center;padding:28px;max-width:min(88vw,420px)}
+  .seal{width:104px;height:104px;margin:0 auto 26px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#e8c47a,#a67c2e 70%);
+    display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap;
+    color:#fff8e6;font-size:27px;font-weight:600;letter-spacing:.02em;
+    box-shadow:0 10px 30px rgba(120,86,24,.35), inset 0 0 0 3px rgba(255,248,230,.32);
+    animation:breathe 3s ease-in-out infinite}
+  .seal span{font-size:17px;opacity:.85}
+  @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+  .env-to{font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .env-name{font-size:29px;font-weight:600;color:var(--gold);line-height:1.25;margin-bottom:22px}
+  .env-open{display:inline-block;padding:13px 30px;border:1.4px solid var(--gold);border-radius:999px;
+    color:var(--gold);font-size:15px;letter-spacing:.18em;text-transform:uppercase;background:none;
+    cursor:pointer;font-family:inherit}
+  .env-open:active{background:rgba(166,124,46,.1)}
+
+  /* ── pages ───────────────────────────────── */
+  main{max-width:520px;margin:0 auto;padding:14px 12px 40px}
+  .card{
+    position:relative;margin:0 0 18px;border-radius:6px;overflow:hidden;
+    box-shadow:0 2px 6px rgba(60,45,20,.10), 0 18px 44px rgba(60,45,20,.13);
+    background:#efe8d8 center/cover no-repeat;
+    opacity:0;transform:translateY(26px);
+    transition:opacity .85s ease, transform .85s cubic-bezier(.2,.7,.3,1);
+  }
+  .card.in{opacity:1;transform:none}
+  .card img{opacity:0;transition:opacity .5s}
+  .card img.ready{opacity:1}
+
+  /* ── the personal panel ──────────────────── */
+  .panel{
+    background:#fbf7ec;border:1px solid #e6dcc3;border-radius:6px;
+    padding:42px 26px 38px;text-align:center;position:relative;
+    box-shadow:0 2px 6px rgba(60,45,20,.10), 0 18px 44px rgba(60,45,20,.13);
+    margin:0 0 18px;opacity:0;transform:translateY(26px);
+    transition:opacity .85s ease, transform .85s cubic-bezier(.2,.7,.3,1);
+  }
+  .panel.in{opacity:1;transform:none}
+  .panel::before,.panel::after{content:'';position:absolute;left:20px;right:20px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold-l),transparent)}
+  .panel::before{top:16px}
+  .panel::after{bottom:16px}
+  .om{font-size:26px;color:var(--gold);margin-bottom:16px;opacity:.9}
+  .to{font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .gname{
+    font-size:clamp(27px,7.4vw,38px);font-weight:600;line-height:1.28;color:var(--gold);
+    background:linear-gradient(100deg,var(--gold) 20%,#e6c886 44%,var(--gold) 68%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .gname.shine{animation:shine 2.1s ease-out .35s 1 both}
+  @keyframes shine{from{background-position:170% 0}to{background-position:-30% 0}}
+  .panel p{margin:18px auto 0;max-width:30ch;font-size:17.5px;line-height:1.62;color:#4a4234}
+  .events-line{margin-top:20px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  /* ── event heading strip ─────────────────── */
+  .strip{text-align:center;margin:26px 0 12px;opacity:0;transform:translateY(14px);
+    transition:opacity .7s ease,transform .7s ease}
+  .strip.in{opacity:1;transform:none}
+  .strip span{display:inline-block;padding:0 15px;font-size:12px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--muted);position:relative}
+  .strip span::before,.strip span::after{content:'';position:absolute;top:50%;width:36px;height:1px;
+    background:var(--gold-l)}
+  .strip span::before{right:100%}
+  .strip span::after{left:100%}
+
+  /* ── footer ──────────────────────────────── */
+  footer{text-align:center;padding:22px 18px 46px;color:var(--muted);font-size:15px;line-height:1.7}
+  footer .names{color:var(--gold);font-size:20px;font-weight:600;margin-bottom:6px}
+  .add{display:inline-block;margin-top:16px;padding:11px 22px;border:1.3px solid var(--gold-l);
+    border-radius:999px;color:var(--gold);text-decoration:none;font-size:13.5px;letter-spacing:.12em;
+    text-transform:uppercase}
+
+  /* ── scroll cue ──────────────────────────── */
+  #cue{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:40;
+    color:var(--gold);font-size:22px;opacity:0;transition:opacity .5s;pointer-events:none}
+  #cue.show{opacity:.75;animation:bob 1.9s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+  .oops{text-align:center;padding:74px 30px;color:var(--muted);font-size:16.5px;line-height:1.75;
+    max-width:420px;margin:0 auto}
+  .oops b{display:block;color:var(--gold);font-size:25px;margin:0 0 16px;font-weight:600}
+  .oops-seal{width:78px;height:78px;margin:0 auto 26px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#e8c47a,#a67c2e 70%);
+    display:flex;align-items:center;justify-content:center;gap:3px;white-space:nowrap;
+    color:#fff8e6;font-size:21px;font-weight:600;
+    box-shadow:0 8px 22px rgba(120,86,24,.3), inset 0 0 0 2px rgba(255,248,230,.32)}
+  .oops-seal span{font-size:14px;opacity:.85}
+
+  @media (prefers-reduced-motion: reduce){
+    .card,.panel,.strip{transition:none;opacity:1;transform:none}
+    .gname.shine{animation:none}
+    .seal,.diya,#cue.show{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="boot"><div class="diya"></div></div>
+
+<div id="envelope" hidden>
+  <div class="env-inner">
+    <div class="seal">M<span>&amp;</span>R</div>
+    <div class="env-to">An invitation for</div>
+    <div class="env-name" id="envName">&nbsp;</div>
+    <button class="env-open" onclick="openInvite()">Open</button>
+  </div>
+</div>
+
+<main id="app" hidden></main>
+<div id="cue">&#8964;</div>
+
+<script>
+/* ═══════════ event definitions, in date order ═══════════ */
+var EVENTS = [
+  { key:'gaam',    img:'assets/gaam.webp',    label:'Gaam Function', short:'Gaam Function',
+    when:'Tuesday 26 January' },
+  { key:'sangeet', img:'assets/sangeet.webp', label:'Sangeet',       short:'Sangeet',
+    when:'Sunday 31 January' },
+  { key:'wedding', img:'assets/wedding.webp', label:'The Wedding',   short:'Wedding',
+    when:'Tuesday 2 February' }
+];
+
+var GUESTS = null, G = null;
+
+/* ═══════════ who is this? ═══════════ */
+function param(k){
+  var m = new RegExp('[?&#]' + k + '=([^&#]*)').exec(location.href);
+  return m ? decodeURIComponent(m[1]) : '';
+}
+
+fetch('guests.json?v=' + Date.now())
+  .then(function(r){ return r.json(); })
+  .then(function(d){ GUESTS = d; start(); })
+  .catch(function(){ start(); });
+
+function start(){
+  var id = (param('g') || '').toUpperCase();
+  var tok = param('t');
+  var boot = document.getElementById('boot');
+
+  // A valid guest and matching token is the only way in. The bare URL,
+  // a wrong token and an unknown id all land on the same polite dead end,
+  // so nothing about the guest list leaks from what the page does.
+  if (GUESTS && GUESTS[id] && GUESTS[id].t && GUESTS[id].t === tok) {
+    G = GUESTS[id];
+    G.id = id;
+  }
+
+  if (!G) return fail();
+
+  document.getElementById('envName').textContent = G.n || 'You';
+  document.title = G.n ? (G.n + ' · Mihir weds Rachel') : 'Mihir weds Rachel';
+
+  build();
+  preload();
+
+  setTimeout(function(){
+    boot.classList.add('gone');
+    var env = document.getElementById('envelope');
+    env.hidden = false;
+    // let the browser paint the hidden->shown change before animating
+    requestAnimationFrame(function(){ env.style.opacity = 1; });
+    setTimeout(function(){ boot.remove(); }, 700);
+  }, 350);
+}
+
+function fail(){
+  document.getElementById('boot').remove();
+  document.getElementById('envelope').remove();
+  var a = document.getElementById('app');
+  a.hidden = false;
+  a.innerHTML = '<div class="oops">' +
+      '<div class="oops-seal">M<span>&amp;</span>R</div>' +
+      '<b>Mihir &amp; Rachel</b>' +
+      'Invitations here are personal, so each one opens from its own link.<br><br>' +
+      'If you were sent one, please open it from that message. ' +
+      'If something looks wrong with it, do let us know and we will send it across again.' +
+    '</div>';
+}
+
+/* ═══════════ build the pages ═══════════ */
+function build(){
+  var app = document.getElementById('app');
+  var h = '';
+
+  h += card('assets/cover.webp', 'Mihir weds Rachel');
+
+  // the personal panel
+  h += '<div class="panel" data-anim>' +
+         '<div class="om">ॐ</div>' +
+         (G.n ? '<div class="to">Dear</div><div class="gname" id="gname">' + esc(G.n) + '</div>' : '') +
+         '<p>With love and warm regards, we invite you to share in ' +
+         'the celebrations as our families come together.</p>' +
+         (G.e && G.e.length ? '<div class="events-line">' + eventWords() + '</div>' : '') +
+       '</div>';
+
+  h += card('assets/names.webp', 'Manisha & Arvind Darji invite you');
+
+  var mine = EVENTS.filter(function(e){ return (G.e || []).indexOf(e.key) > -1; });
+  mine.forEach(function(e){
+    h += '<div class="strip" data-anim><span>' + e.when + '</span></div>';
+    h += card(e.img, e.label);
+  });
+
+  h += card('assets/family.webp', 'With the blessings of our family');
+
+  h += '<footer>' +
+         '<div class="names">Mihir &amp; Rachel</div>' +
+         'We look forward to celebrating with you.' +
+         (mine.length ? '<br><a class="add" id="calBtn" href="#">Add to calendar</a>' : '') +
+       '</footer>';
+
+  app.innerHTML = h;
+  if (mine.length) wireCalendar(mine);
+}
+
+function card(src, alt){
+  var tiny = src.replace('.webp', '-tiny.webp');
+  return '<div class="card" data-anim style="background-image:url(' + tiny + ')">' +
+    '<img loading="lazy" src="' + src + '" alt="' + esc(alt) + '" ' +
+    'onload="this.classList.add(\'ready\')">' +
+  '</div>';
+}
+
+function eventWords(){
+  var names = EVENTS.filter(function(e){ return G.e.indexOf(e.key) > -1; })
+                    .map(function(e){ return e.short || e.label; });
+  if (names.length === 1) return names[0];
+  if (names.length === 2) return names.join(' &amp; ');
+  return names.slice(0, -1).join(' · ') + ' · ' + names[names.length - 1];
+}
+
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+
+/* ═══════════ opening ═══════════ */
+function openInvite(){
+  var env = document.getElementById('envelope');
+  env.classList.add('open');
+  document.getElementById('app').hidden = false;
+  setTimeout(function(){ env.remove(); }, 950);
+
+  reveal();
+  var n = document.getElementById('gname');
+  if (n) setTimeout(function(){ n.classList.add('shine'); }, 500);
+
+  var cue = document.getElementById('cue');
+  cue.classList.add('show');
+  window.addEventListener('scroll', function once(){
+    cue.classList.remove('show');
+    window.removeEventListener('scroll', once);
+  }, { passive:true });
+
+  ping();
+}
+
+/* Fade each panel in as it comes into view. */
+function reveal(){
+  var items = [].slice.call(document.querySelectorAll('[data-anim]'));
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      io.unobserve(en.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  items.forEach(function(el){ io.observe(el); });
+  // the first two are already on screen
+  setTimeout(function(){
+    items.slice(0, 2).forEach(function(el){ el.classList.add('in'); });
+  }, 60);
+}
+
+/* Warm the images the guest will actually scroll to. */
+function preload(){
+  var list = ['assets/cover.webp', 'assets/names.webp'];
+  EVENTS.forEach(function(e){ if ((G.e || []).indexOf(e.key) > -1) list.push(e.img); });
+  list.push('assets/family.webp');
+  list.forEach(function(src, i){
+    setTimeout(function(){ var im = new Image(); im.src = src; }, i * 120);
+  });
+}
+
+/* ═══════════ calendar ═══════════ */
+var CAL = {
+  gaam:    { t:'Gaam Function · Mihir weds Rachel', s:'20270126T083000Z', e:'20270126T160000Z',
+             l:'Mamta Bunglow, Gaam Liloi, Ta. Modasa, Arvalli, Gujarat 383316' },
+  sangeet: { t:'Sangeet · Mihir weds Rachel',       s:'20270131T123000Z', e:'20270131T180000Z',
+             l:'Mumbai' },
+  wedding: { t:'Wedding · Mihir weds Rachel',       s:'20270202T093000Z', e:'20270202T170000Z',
+             l:'PVM Gymkhana Colaba, Maharishi Karve Road, Nariman Point, Mumbai 400021' }
+};
+function wireCalendar(mine){
+  var lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Darji Parivar//Wedding//EN','CALSCALE:GREGORIAN'];
+  mine.forEach(function(e){
+    var c = CAL[e.key];
+    if (!c) return;
+    lines.push('BEGIN:VEVENT','UID:' + e.key + '-mihirrachel@invite',
+      'DTSTAMP:' + c.s, 'DTSTART:' + c.s, 'DTEND:' + c.e,
+      'SUMMARY:' + c.t, 'LOCATION:' + c.l, 'END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  var blob = new Blob([lines.join('\r\n')], { type:'text/calendar' });
+  var btn = document.getElementById('calBtn');
+  if (btn) { btn.href = URL.createObjectURL(blob); btn.download = 'mihir-rachel.ics'; }
+}
+
+/* ═══════════ tell the tracker it was opened ═══════════ */
+/* Set TRACKER to your Apps Script /exec URL to record opens. Leave blank to skip. */
+var TRACKER = '';
+function ping(){
+  if (!TRACKER || !G || !G.id) return;
+  try {
+    var img = new Image();
+    img.src = TRACKER + '?seen=' + encodeURIComponent(G.id) + '&r=' + Date.now();
+  } catch (e) {}
+}
+</script>
+</body>
+</html>
